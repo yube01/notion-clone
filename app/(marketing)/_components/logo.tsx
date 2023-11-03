@@ -10,11 +10,10 @@ const font = Poppins({
 
 export const Logo = ()=>{
     return(
-        <div className="hidden md:flex items-center gap-x-2">
-            <Image src="/next.svg" height="40" width="40" alt="Logo"/>
-            <p className={cn("font-semibold",font.className)}>Notion </p>
-            <div className="md:ml-auto w-full justify-between md:justify-end 
-            flex items-center gap-x-2 text-muted-foreground ">
+        <div className="md:flex items-center gap-x-2 md:justify-between">
+            <div className="flex gap-3"><Image src="/next.svg" height="40" width="40" alt="Logo"/>
+            <p className={cn("font-semibold",font.className)}>Notion </p></div>
+            <div className=" hidden md:flex md:items-center text-muted-foreground ">
                 <Button variant="ghost" size="sm">
                 Privacy Policy
                 </Button>
