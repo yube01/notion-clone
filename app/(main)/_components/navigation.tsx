@@ -1,10 +1,12 @@
 "use client";
 
 import { cn } from '@/lib/utils';
-import { ChevronsLeft, MenuIcon } from 'lucide-react';
+import { ChevronsLeft, MenuIcon, PlusCircle } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts';
+import { UserItem } from './user-item';
+import { Item } from './item';
 
 export const Navigation = () => {
 
@@ -21,20 +23,20 @@ export const Navigation = () => {
 
  
 
-  // useEffect(() => {
-  //   if (isMobile) {
-  //     collapse();
-  //   } else {
-  //     resetWidth();
-  //   }
-  // }, [isMobile]);
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    } else {
+      resetWidth();
+    }
+  }, [isMobile]);
   
 
-  // useEffect(() => {
-  //   if (isMobile) {
-  //     collapse();
-  //   }
-  // }, [pathname, isMobile]);
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    }
+  }, [pathname, isMobile]);
 
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement,MouseEvent>
@@ -96,6 +98,18 @@ export const Navigation = () => {
     
   }
 
+  const collapse = () => {
+    if (sidebarRef.current && navbarRef.current) {
+      setIsCollapsed(true);
+      setIsReseting(true);
+
+      sidebarRef.current.style.width = "0";
+      navbarRef.current.style.setProperty("width", "100%");
+      navbarRef.current.style.setProperty("left", "0");
+      setTimeout(() => setIsReseting(false), 300);
+    }
+  }
+
 
 
 
@@ -109,15 +123,19 @@ export const Navigation = () => {
    isMobile && "w-0"
    )}>
     <div role='button' 
-    
+    onClick={collapse}
     className= {cn('  h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-500 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition',
     isMobile && "opacity-100"
     )}>
-    <ChevronsLeft onClick={resetWidth} className='h-6 w-6'/>
+    <ChevronsLeft className='h-6 w-6'/>
     </div>
     
     <div>
-      <p>Action Items</p>
+      <UserItem/>
+      <Item onClick={()=>{}}
+      label="New page"
+      icon={PlusCircle}
+      />
     </div>
     <div className='mt-4'>
       <p>Documents</p>
