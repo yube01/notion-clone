@@ -18,7 +18,7 @@ export const SettingsModal = ()=>{
                         </h2>
 
                     </DialogHeader>
-                    <div className=" flex items-center justify-center">
+                    <div className=" flex items-center justify-between">
                         <div className=" flex flex-col gap-y-1">
                             <Label>
                                 Appearance
