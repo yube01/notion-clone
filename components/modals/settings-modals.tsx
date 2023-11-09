@@ -3,6 +3,7 @@
 import { useSettings } from "@/hooks/use-settings";
 import { Dialog, DialogContent, DialogHeader } from "../ui/dialog";
 import { Label } from "../ui/label";
+import { ModeToggle } from "../mode-toggle";
 
 
 export const SettingsModal = ()=>{
@@ -28,7 +29,7 @@ export const SettingsModal = ()=>{
                             </span>
 
                         </div>
-
+                        <ModeToggle/>
                     </div>
                 </DialogContent>
         </Dialog>
